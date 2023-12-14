@@ -1,14 +1,13 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { AggresiveStrippedOrder } from './CustomTypesComponent/CustomTypes';
-
 export const app = express();
+const process = require("process");
 var bodyParser = require('body-parser');
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
-const port = 8080;
 
 /****PORTS****/
 require("./KucoinComponent/KucoinPort");
@@ -17,14 +16,10 @@ require("./KucoinComponent/KucoinPort");
 
 // Middleware pour parser le corps des requêtes en JSON
 app.use(express.json());
+const INTESTING : boolean = false;//TO REMOVE CONCURENT PORT LISTENNING
 
-// Route de test
-app.get('/api/hello', (req: Request, res: Response) => {
-    res.json({ message: 'Cumulative Delta Index!' });
-});
-
-require("./server");
-
+if (INTESTING)
+    require("./server");
 
 let currentCumulativeDelta : number = 0;
 let numberOfDeltaConsumed: number = 0;
@@ -37,7 +32,7 @@ export function CalculateCurrentCumulativeDelta(newOrder :AggresiveStrippedOrder
 }
 
 export function getNumberOfDeltaConsumedCore(){
-    return numberOfDeltaConsumed
+    return numberOfDeltaConsumed;
 }
 export function setNumberOfDeltaConsumed(nbOfDelta : number){
     numberOfDeltaConsumed = nbOfDelta;

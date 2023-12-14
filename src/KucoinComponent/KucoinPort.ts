@@ -35,12 +35,11 @@ app.get('/kucoin/CumulativeDelta/update',
                 res.json(objToSend);
             }
         }else{
-            let objToSend={
-                "pair" :"No PAIR",
-                'CurrentCumulativeDelta':getCurrentCumulativeDelta(),
-                "NumberOfOrdersConsumed":getNumberOfDeltaConsumed()
-            }
             nullifyCDandNbOfDeltaConsumed();
+            let objToSend={
+                "pair" :"No PAIR PROVIDED"
+            }
+            
             res.json(objToSend);
         }
     }
@@ -58,12 +57,11 @@ app.get('/kucoin/CumulativeDelta/history',async (req ,res)=>{
         nullifyCDandNbOfDeltaConsumed();
         res.json(objToSend);
     }else{
-        let objToSend={
-            "pair" :"No PAIR",
-            'CurrentCumulativeDelta':getCurrentCumulativeDelta(),
-            "NumberOfOrdersConsumed":getNumberOfDeltaConsumed()
-        }
         nullifyCDandNbOfDeltaConsumed();
+        let objToSend={
+            "pair" :"No PAIR PROVIDED"
+        }
+        
         res.json(objToSend);
     }
 });
@@ -101,8 +99,6 @@ export function PopulateAllOrderTraded(customRequest : KucoinSubscriptionObject)
 }
 
 export async function PopulateHistoricalTrade(pair : string){
-    if(pair==="")pair="No PAIR ENTERED";
-
     await fetch(`https://api.kucoin.com/api/v1/market/histories?symbol=${pair}`)
     .then((response)=> response.json())
     .then((data)=>{

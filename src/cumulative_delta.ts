@@ -23,7 +23,7 @@ app.get('/api/hello', (req: Request, res: Response) => {
     res.json({ message: 'Cumulative Delta Index!' });
 });
 
-//require("./server");
+require("./server");
 
 
 let currentCumulativeDelta : number = 0;

@@ -9,7 +9,7 @@ let soc : Websocket;
 /***ROUTES**/
 app.get('/kucoin/CumulativeDelta/reInit',(req,res)=>{
     nullifyCDandNbOfDeltaConsumed();
-    res.send(200);
+    res.sendStatus(200);
 });
 app.get('/kucoin/CumulativeDelta/update', 
     (req,res)=>{

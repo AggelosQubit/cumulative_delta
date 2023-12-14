@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/cumulative_delta.ts",
   "scripts": {
-    "start:dev": "npx nodemon --delay 1500ms",
+    "start:dev": "npx nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

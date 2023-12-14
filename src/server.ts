@@ -1,3 +1,4 @@
+"use strict";
 import { app } from '../src/cumulative_delta';
 
 /***ROUTES**/

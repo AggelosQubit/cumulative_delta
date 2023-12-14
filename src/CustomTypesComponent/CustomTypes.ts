@@ -1,3 +1,4 @@
+"use strict";
 export type SpotMarketTradedOrder = {
     "topic": string,
     "type": string,

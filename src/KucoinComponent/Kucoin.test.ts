@@ -1,3 +1,4 @@
+"use strict";
 import { WebSocket } from 'ws';
 import { PopulateAllOrderTraded, PopulateHistoricalTrade, allOrderTraded, initWsConnection } from './KucoinPort';
 import { transformNextOrderTradedSides, getCurrentCumulativeDelta, transformHistoricalTrade, historicalTradesBatch } from './KucoinAdapter';

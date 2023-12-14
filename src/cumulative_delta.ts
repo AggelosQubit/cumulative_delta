@@ -1,3 +1,4 @@
+"use strict";
 import express from 'express';
 import { AggresiveStrippedOrder } from './CustomTypesComponent/CustomTypes';
 export const app = express();
@@ -16,9 +17,9 @@ require("./KucoinComponent/KucoinPort");
 
 // Middleware pour parser le corps des requêtes en JSON
 app.use(express.json());
-const INTESTING : boolean = false;//TO REMOVE CONCURENT PORT LISTENNING
+const INTESTING : boolean = true;//TO REMOVE CONCURENT PORT LISTENNING
 
-if (INTESTING)
+if (!INTESTING)
     require("./server");
 
 let currentCumulativeDelta : number = 0;

@@ -1,3 +1,4 @@
+"use strict";
 import { SpotMarketTradedOrder, AggresiveStrippedOrder, HistoricalTrades } from '../CustomTypesComponent/CustomTypes'
 import {    
     CalculateCurrentCumulativeDelta, 

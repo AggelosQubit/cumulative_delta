@@ -1,3 +1,4 @@
+"use strict";
 import { CalculateCurrentCumulativeDelta, getCurrentCumulativeDeltaCore } from "./src/cumulative_delta";
 
 describe("Kucoin Suite Tests - Port ",

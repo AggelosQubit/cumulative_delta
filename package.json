@@ -4,8 +4,8 @@
   "description": "",
   "main": "./src/cumulative_delta.ts",
   "scripts": {
-    "start:dev": "npx nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx nodemon",
+    "test": "set PORT=0&&npx jest --verbose"
   },
   "keywords": [],
   "author": "",

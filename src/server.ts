@@ -2,6 +2,8 @@
 import { app } from '../src/cumulative_delta';
 
 /***ROUTES**/
-app.listen(8080, () => {
-    console.log(`Serveur lancé at http://localhost:${8080}`);
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+    //console.log(`Serveur lancé at http://localhost:${port}`);
 });

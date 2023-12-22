@@ -3,10 +3,15 @@ import Websocket from 'ws';
 import { transformHistoricalTrade, getCurrentCumulativeDelta, transformNextOrderTradedSides, getNumberOfDeltaConsumed, nullifyCDandNbOfDeltaConsumed } from './KucoinAdapter';
 import { SpotMarketTradedOrder, KucoinSubscriptionObject, HistoricalTrades } from '../CustomTypesComponent/CustomTypes'
 import { app } from '../cumulative_delta';
+import { UsablePairs } from '../../Assets/UsablePairs';
 
 let soc : Websocket;
 
 /***ROUTES**/
+app.get('/kucoin/UsablePairs',(req,res)=>{
+    nullifyCDandNbOfDeltaConsumed();
+    res.json(UsablePairs)
+});
 app.get('/kucoin/CumulativeDelta/reInit',(req,res)=>{
     nullifyCDandNbOfDeltaConsumed();
     res.sendStatus(200);
@@ -46,7 +51,7 @@ app.get('/kucoin/CumulativeDelta/update',
 );
 
 app.get('/kucoin/CumulativeDelta/history',async (req ,res)=>{
-    console.log(req.body)
+    //console.log(req.body)
     if(req.body["pair"]!==undefined && req.body["pair"]!==""){
         await PopulateHistoricalTrade(req.body["pair"])
         let objToSend={

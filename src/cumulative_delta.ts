@@ -2,7 +2,6 @@
 import express from 'express';
 import { AggresiveStrippedOrder } from './CustomTypesComponent/CustomTypes';
 export const app = express();
-const process = require("process");
 var bodyParser = require('body-parser');
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,13 +13,10 @@ app.use(bodyParser.json());
 require("./KucoinComponent/KucoinPort");
 /****END PORTS****/
 
-
 // Middleware pour parser le corps des requêtes en JSON
 app.use(express.json());
-const INTESTING : boolean = true;//TO REMOVE CONCURENT PORT LISTENNING
 
-if (!INTESTING)
-    require("./server");
+require("./server");
 
 let currentCumulativeDelta : number = 0;
 let numberOfDeltaConsumed: number = 0;
